@@ -1,57 +1,65 @@
 .App {
   text-align: center;
-  border: solid 2px red;
+  /* border: solid 2px red; */
   justify-content: center;
 }
 
-.cards{
+header {
+  background: #b2ad7f;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  border-top-style: ridge;
+  border-bottom-style: ridge;
+}
+
+.cards {
   display: flex;
   justify-content: space-evenly;
 }
 
-.Pokemon{
-  border:solid 2px black;
+.Pokemon {
+  border: solid 2px black;
   border-radius: 10px;
   width: 200px;
-  display: block;
+  display: inline-block;
   justify-content: center;
   margin: 10px;
 }
 
-.PokemnonImage{
-  height: 100px
+.PokemnonImage {
+  height: 100px;
 }
 
-.Water{
-  background:lightblue;
+.Water {
+  background: lightblue;
 }
 
-.Fire{
-  background:lightsalmon;
+.Fire {
+  background: lightsalmon;
 }
 
-.Grass{
-  background:lightgreen;
+.Grass {
+  background: lightgreen;
 }
 
-.Electric{
-  background:lightyellow;
+.Electric {
+  background: #feb236;
 }
 
-.Trainer{
-  border:solid 2px black;
+.Trainer {
+  border: solid 2px black;
   border-radius: 10px;
   width: 200px;
-  display: block;
+  display: inline-block;
   justify-content: center;
   background-color: lightgray;
   margin: 10px;
 }
 
-.TrainerImage{
-  height: 150px
+.TrainerImage {
+  height: 300px;
 }
 
-.PokemonIcons{
-  height: 40px
+.PokemonIcons {
+  height: 40px;
 }
