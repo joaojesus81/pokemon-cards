@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import fetchPokemon from "../api";
 
 class PlayerCard extends Component {
   onPokeGeneration = (selectedPokemons) => {
@@ -7,9 +6,10 @@ class PlayerCard extends Component {
   };
 
   componentDidMount() {
-    const randomArray = this.props.trainer.currentHand;
-    const selectedPokemons = fetchPokemon(randomArray);
-    this.onPokeGeneration(selectedPokemons);
+    // console.log("PlayerCard has mounted");
+    // const randomArray = this.props.trainer.currentHand;
+    // const selectedPokemons = fetchPokemon(randomArray);
+    // this.onPokeGeneration(selectedPokemons);
   }
 
   render() {

@@ -4,6 +4,7 @@ import ChampSelect from "./components/ChampSelect";
 import Cards from "./components/Cards";
 import StartGame from "./components/start-game";
 import PlayerCard from "./components/PlayerCard";
+import { fetchPokemon } from "./utils/api";
 
 class App extends React.Component {
   state = {
@@ -71,15 +72,21 @@ class App extends React.Component {
                 pokeCards={this.state.pokeCards}
               />
             )}
-            {this.state.step >= 2 && (
-              <PlayerCard
-                trainer={this.state["1"]}
-                handlePokemonSelection={this.handlePokemonSelection}
-              />
-            )}
-            {typeof this.state[1].currentHand[0] === "object" && (
-              <Cards currentHand={this.state["1"].currentHand} />
-            )}
+            <ul className="player-and-poke">
+              <li>
+                {this.state.step >= 2 && (
+                  <PlayerCard
+                    trainer={this.state["1"]}
+                    handlePokemonSelection={this.handlePokemonSelection}
+                  />
+                )}
+              </li>
+              <li>
+                {typeof this.state[1].currentHand[0] === "object" && (
+                  <Cards currentHand={this.state["1"].currentHand} />
+                )}
+              </li>
+            </ul>
           </section>
 
           <section>
@@ -91,12 +98,21 @@ class App extends React.Component {
                 pokeCards={this.state.pokeCards}
               />
             )}
-            {this.state.step >= 3 && (
-              <PlayerCard
-                trainer={this.state["2"]}
-                handlePokemonSelection={this.handlePokemonSelection}
-              />
-            )}
+            <ul className="player-and-poke">
+              <li>
+                {this.state.step >= 3 && (
+                  <PlayerCard
+                    trainer={this.state["2"]}
+                    handlePokemonSelection={this.handlePokemonSelection}
+                  />
+                )}
+              </li>
+              <li>
+                {typeof this.state[2].currentHand[0] === "object" && (
+                  <Cards currentHand={this.state["2"].currentHand} />
+                )}
+              </li>
+            </ul>
           </section>
         </main>
       </div>
@@ -142,22 +158,20 @@ class App extends React.Component {
   };
 
   onChampSelect = (selected) => {
-    this.setState((currentState) => {
-      const { trainers } = currentState;
-
-      const remainingTrainers = { ...trainers };
-      delete remainingTrainers[selected];
-
-      return {
-        [currentState.step]: {
-          champ: { [selected]: currentState.trainers[selected] },
-          currentHand: Array.from({ length: 6 }, () =>
-            Math.floor(Math.random() * 151)
-          ),
-        },
-        step: currentState.step + 1,
-        trainers: remainingTrainers,
-      };
+    fetchPokemon().then((data) => {
+      this.setState((currentState) => {
+        const { trainers } = currentState;
+        const remainingTrainers = { ...trainers };
+        delete remainingTrainers[selected];
+        return {
+          [currentState.step]: {
+            champ: { [selected]: currentState.trainers[selected] },
+            currentHand: data,
+          },
+          step: currentState.step + 1,
+          trainers: remainingTrainers,
+        };
+      });
     });
   };
 
