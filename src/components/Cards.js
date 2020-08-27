@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 
-class Card extends Component {
+class Cards extends Component {
   render() {
-    const pokeCardsArray = Object.entries(this.props.pokeCards);
-    return pokeCardsArray.map((pokemon) => {
-      console.log(pokemon);
+    console.log("im at the card");
+    const pokeCardsArray = this.props.currentHand;
+    console.log(pokeCardsArray);
+    return null;
+    pokeCardsArray.map((pokemon) => {
       return (
         <section key={pokemon[0]} className={`Pokemon ${pokemon[1].type}`}>
           <h3>{pokemon[0]}</h3>
@@ -22,4 +24,4 @@ class Card extends Component {
   }
 }
 
-export default Card;
+export default Cards;

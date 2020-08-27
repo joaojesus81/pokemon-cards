@@ -4,6 +4,10 @@
   justify-content: center;
 }
 
+img.TrainerImage {
+  cursor: pointer;
+}
+
 header {
   background: #b2ad7f;
   border-top-width: 10px;
@@ -49,7 +53,7 @@ header {
 .Trainer {
   border: solid 2px black;
   border-radius: 10px;
-  width: 200px;
+  width: 150px;
   display: inline-block;
   justify-content: center;
   background-color: lightgray;
@@ -57,7 +61,7 @@ header {
 }
 
 .TrainerImage {
-  height: 300px;
+  height: 200px;
 }
 
 .PokemonIcons {
